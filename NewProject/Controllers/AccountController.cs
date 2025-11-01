@@ -4,6 +4,7 @@ using NewProject.Model;
 
 namespace NewProject.Controllers
 {
+    [Route("[controller]")]
     public class AccountController : ControllerBase
     {
         private readonly IAuthManager _auth;
@@ -19,7 +20,7 @@ namespace NewProject.Controllers
             {
                 return BadRequest("Invalid client request");
             }
-            if(user.Username == "testuser" || user.Password == "testpassword")
+            if(user.Username == "testuser" && user.Password == "testpassword")
             {
                 token = _auth.GenerateJWTToken();
             }
